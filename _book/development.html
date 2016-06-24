@@ -2,7 +2,7 @@
 <!DOCTYPE HTML>
 <html lang="" >
     <head>
-        <title>Installation · GitBook</title>
+        <title>Development · GitBook</title>
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
@@ -58,7 +58,7 @@
 
     
     
-    <link rel="prev" href="dch.html" />
+    <link rel="prev" href="tests-and-benchmarks.md" />
     
 
     </head>
@@ -145,7 +145,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.2" data-path="installation.html">
+        <li class="chapter " data-level="1.2" data-path="installation.html">
             
                 <a href="installation.html">
             
@@ -274,7 +274,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.6" data-path="development.html">
+        <li class="chapter active" data-level="1.6" data-path="development.html">
             
                 <a href="development.html">
             
@@ -317,7 +317,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href="." >Installation</a>
+        <a href="." >Development</a>
     </h1>
 </div>
 
@@ -332,61 +332,7 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="installation">Installation</h1>
-<p><strong>Coming soon:</strong> There will soon be a public facing instance of this server to build and test against.</p>
-<p>This project is built using <code>Go 1.6</code>, but may work against older versions.</p>
-<h3 id="software-dependencies">Software Dependencies:</h3>
-<ul>
-<li>MySQL</li>
-<li>Redis</li>
-</ul>
-<p>In order to develop against this project, clone it using <code>git clone https://github.com/ksred/bank.git</code>. Make sure you have all dependencies the project uses:</p>
-<ul>
-<li><code>go get github.com/go-sql-driver/mysql</code></li>
-<li><code>go get github.com/satori/go.uuid</code></li>
-<li><code>go get gopkg.in/redis.v3</code></li>
-<li><code>go get github.com/gorilla/mux</code></li>
-<li><code>go get github.com/shopspring/decimal</code></li>
-</ul>
-<p>You can then <code>go build</code>.</p>
-<h2 id="install-certs">Install certs</h2>
-<p>Either create your own self-signed certs or purchase them and place them in the <code>certs/</code> directory. There is a script <code>generateCerts.sh</code> to assist with this. These certs must keep the same naming convention:</p>
-<ul>
-<li><code>server.key</code></li>
-<li><code>server.pem</code></li>
-<li><code>client.key</code></li>
-<li><code>client.pem</code></li>
-</ul>
-<h2 id="running-the-http-api">Running the HTTP API</h2>
-<p>Once built, you can run the HTTP API:</p>
-<ul>
-<li>Secure: <code>./bank http</code> or just <code>./bank</code></li>
-<li>Insecure: There is no insecure mode implemented</li>
-</ul>
-<p>The API will then be available at the <a href="https://github.com/ksred/bank/blob/master/main.go#L11" target="_blank">FQDN and port specified</a>.</p>
-<h2 id="running-the-cli-client">Running the CLI client</h2>
-<p>The program comes with a CLI client. A TLS client can only connect to a TLS server, so the modes must match. The server accepts commands from the CLI separated by new lines. <em>A detailed explanation will be placed in the wiki.</em></p>
-<p>You can run the client:</p>
-<ul>
-<li>Secure: <code>./bank client</code></li>
-<li>Insecure: <code>./bank clientNoTLS</code></li>
-</ul>
-<h2 id="example-flow-using-cli">Example flow using CLI</h2>
-<p>The following illustrates an example flow for using the server through the CLI client.</p>
-<p><strong>Create account</strong></p>
-<pre><code>0~acmt~1~Kyle~Redelinghuys~19700101~197001011234098~55512340987~~email@domain.com~Physical Address 1~~~1000
-</code></pre><p>This call responds with the <code>user_id</code>:</p>
-<pre><code>1~52d27bde-9418-4a5d-8528-3fb32e1a5d69
-</code></pre><p><strong>Create account login</strong></p>
-<pre><code>0~appauth~3~52d27bde-9418-4a5d-8528-3fb32e1a5d69~TestPassword
-</code></pre><p><strong>Log into account</strong></p>
-<pre><code>0~appauth~2~52d27bde-9418-4a5d-8528-3fb32e1a5d69~TestPassword
-</code></pre><p>This responds with a token:</p>
-<pre><code>1~cb485f9d-0a24-4385-a358-61ea0d44fdea
-</code></pre><p>This token is valid for 60 minutes by default.</p>
-<p><strong>Make a payment, here the payment amount is 20</strong></p>
-<pre><code>cb485f9d-0a24-4385-a358-61ea0d44fdea~pain~1~52d27bde-9418-4a5d-8528-3fb32e1a5d69@~137232cc-142e-474c-aaaa-43393f9b7c4c@~20
-</code></pre><p>More information is available in the documentation sections for the API. </p>
+                                <p><em>Coming soon</em></p>
 
                                 
                                 </section>
@@ -414,7 +360,7 @@
 
             
                 
-                <a href="dch.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: DCH">
+                <a href="tests-and-benchmarks.md" class="navigation navigation-prev navigation-unique" aria-label="Previous page: Tests and benchmarks">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
@@ -426,7 +372,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Installation","level":"1.2","depth":1,"next":{"title":"API","level":"1.3","depth":1,"ref":"","articles":[{"title":"Accounts","level":"1.3.1","depth":2,"path":"api/accounts.md","ref":"api/accounts.md","articles":[]},{"title":"Auth","level":"1.3.2","depth":2,"path":"api/auth.md","ref":"api/auth.md","articles":[]},{"title":"Payments","level":"1.3.3","depth":2,"path":"api/payments.md","ref":"api/payments.md","articles":[]}]},"previous":{"title":"DCH","level":"1.1.3","depth":2,"path":"dch.md","ref":"dch.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"installation.md","mtime":"2016-06-23T07:42:55.000Z","type":"markdown"},"gitbook":{"version":"3.1.1","time":"2016-06-24T07:23:50.217Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Development","level":"1.6","depth":1,"previous":{"title":"Tests and benchmarks","level":"1.5","depth":1,"path":"tests-and-benchmarks.md","ref":"tests-and-benchmarks.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"development.md","mtime":"2016-06-24T07:54:44.000Z","type":"markdown"},"gitbook":{"version":"3.1.1","time":"2016-06-24T07:23:50.217Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>
