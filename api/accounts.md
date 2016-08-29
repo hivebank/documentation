@@ -147,7 +147,7 @@ JSON list of accountDetails matching the search term.
             "IdentificationNumber": "",
             "ContactNumber1": "",
             "ContactNumber2": "",
-            "EmailAddress": "kyle@ksred.me",
+            "EmailAddress": "kyle@test.com",
             "AddressLine1": "",
             "AddressLine2": "",
             "AddressLine3": "",
