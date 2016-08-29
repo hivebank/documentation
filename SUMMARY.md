@@ -5,7 +5,7 @@
    * [Software](software.md)
    * [DCH](dch.md)
 * [Installation](installation.md)
-* [API]()
+* [API](api/main.md)
    * [Accounts](api/accounts.md)
    * [Auth](api/auth.md)
    * [Payments](api/payments.md)

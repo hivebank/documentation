@@ -2,7 +2,7 @@
 <!DOCTYPE HTML>
 <html lang="" >
     <head>
-        <title>Client · GitBook</title>
+        <title>API · GitBook</title>
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
@@ -57,10 +57,10 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="../tests-and-benchmarks.md" />
+    <link rel="next" href="accounts.html" />
     
     
-    <link rel="prev" href="server.html" />
+    <link rel="prev" href="../installation.html" />
     
 
     </head>
@@ -160,9 +160,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.3" data-path="../api/main.html">
+        <li class="chapter active" data-level="1.3" data-path="main.html">
             
-                <a href="../api/main.html">
+                <a href="main.html">
             
                     
                     API
@@ -174,9 +174,9 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.3.1" data-path="../api/accounts.html">
+        <li class="chapter " data-level="1.3.1" data-path="accounts.html">
             
-                <a href="../api/accounts.html">
+                <a href="accounts.html">
             
                     
                     Accounts
@@ -187,9 +187,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.3.2" data-path="../api/auth.html">
+        <li class="chapter " data-level="1.3.2" data-path="auth.html">
             
-                <a href="../api/auth.html">
+                <a href="auth.html">
             
                     
                     Auth
@@ -200,9 +200,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.3.3" data-path="../api/payments.html">
+        <li class="chapter " data-level="1.3.3" data-path="payments.html">
             
-                <a href="../api/payments.html">
+                <a href="payments.html">
             
                     
                     Payments
@@ -232,9 +232,9 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.4.1" data-path="server.html">
+        <li class="chapter " data-level="1.4.1" data-path="../cli/server.html">
             
-                <a href="server.html">
+                <a href="../cli/server.html">
             
                     
                     Server
@@ -245,9 +245,9 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.4.2" data-path="client.html">
+        <li class="chapter " data-level="1.4.2" data-path="../cli/client.html">
             
-                <a href="client.html">
+                <a href="../cli/client.html">
             
                     
                     Client
@@ -319,7 +319,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >Client</a>
+        <a href=".." >API</a>
     </h1>
 </div>
 
@@ -334,8 +334,31 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <p><em>Coming soon</em></p>
+                                <h1 id="api">API</h1>
+<p>The API is designed to be fully RESTful. We make use of:</p>
+<pre><code>POST
+GET 
+PUT
+DELETE
+</code></pre><h2 id="requests-and-responses">Requests and responses</h2>
+<p>All requests return JSON. For a successfull response, the following is returned:</p>
+<pre><code>{
+  &quot;response&quot;: &quot;Response data, often as a JSON array&quot;
+}
+</code></pre><p>For a response that resulted in an error, the following is returned:</p>
+<pre><code>{
+  &quot;error&quot;: &quot;A detailed error message.&quot;
+}
+</code></pre><h2 id="testing-the-api">Testing the API</h2>
+<p>We use <a href="https://getpostman.com" target="_blank">Postman</a> to do the API requests. You can import the latest 
+Postman <a href="https://bvnk.co/Bvnk.postman_collection.json" target="_blank">collection here</a>.</p>
+<p>If developing locally, please either change the url from <code>bvnk.co:8443</code> to your local instance. Alternatively, 
+add the following in your <code>/etc/hosts</code> file:</p>
+<pre><code>[IP address]    bvnk.co
 
+# Example:
+# 127.0.0.1     bvnk.co
+</code></pre>
                                 
                                 </section>
                             
@@ -362,12 +385,12 @@
 
             
                 
-                <a href="server.html" class="navigation navigation-prev " aria-label="Previous page: Server">
+                <a href="../installation.html" class="navigation navigation-prev " aria-label="Previous page: Installation">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="../tests-and-benchmarks.md" class="navigation navigation-next " aria-label="Next page: Tests and benchmarks">
+                <a href="accounts.html" class="navigation navigation-next " aria-label="Next page: Accounts">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -378,7 +401,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Client","level":"1.4.2","depth":2,"next":{"title":"Tests and benchmarks","level":"1.5","depth":1,"path":"tests-and-benchmarks.md","ref":"tests-and-benchmarks.md","articles":[]},"previous":{"title":"Server","level":"1.4.1","depth":2,"path":"cli/server.md","ref":"cli/server.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"cli/client.md","mtime":"2016-06-24T07:55:10.000Z","type":"markdown"},"gitbook":{"version":"3.1.1","time":"2016-08-29T09:15:40.274Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"API","level":"1.3","depth":1,"next":{"title":"Accounts","level":"1.3.1","depth":2,"path":"api/accounts.md","ref":"api/accounts.md","articles":[]},"previous":{"title":"Installation","level":"1.2","depth":1,"path":"installation.md","ref":"installation.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"api/main.md","mtime":"2016-08-29T10:26:03.000Z","type":"markdown"},"gitbook":{"version":"3.1.1","time":"2016-08-29T09:15:40.274Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

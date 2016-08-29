@@ -158,14 +158,14 @@
             
         </li>
     
-        <li class="chapter " data-level="1.3" >
+        <li class="chapter " data-level="1.3" data-path="main.html">
             
-                <span>
+                <a href="main.html">
             
                     
                     API
             
-                </span>
+                </a>
             
 
             
@@ -333,35 +333,153 @@
                                 <section class="normal markdown-section">
                                 
                                 <h1 id="payments">Payments</h1>
-<p>CLI Code: <code>pain</code></p>
+<p>The accountDetails value for payments is in the following form:</p>
+<p><code>accountNumber@bankNumber</code></p>
+<p>The <code>bankNumber</code> parameter is used to determine which bank the sender and recipient belong to. Currently, 
+only the current deployment is supported. </p>
+<p>If payments are made using an account on the current deployment, the <code>bankNumber</code> parameter should be left blank:</p>
+<p><code>accountNumber@</code></p>
 <h2 id="credit-transfer">Credit Transfer</h2>
-<p>CLI Code: <code>1</code>
-HTTP route: <code>POST</code> to <code>/payment/credit</code></p>
+<p>HTTP route: <code>POST /payment/credit</code></p>
+<p>This route initiates a payment from one party to another. Currently the system only supports payments 
+between account holders on that system. There is, however, scope to include this to payments on another given 
+deployment of BVNK, as well as account holders at other current banking institutions.</p>
 <p><strong>Request</strong></p>
-<ul>
-<li><code>X-Auth-Token</code> header</li>
-<li>SenderAccount@SenderBankAccount</li>
-<li>ReceiverAccount@ReceiverBankAccount</li>
-<li>Amount</li>
-</ul>
-<p><strong>Response</strong></p>
-<ul>
-<li>Message, error</li>
-</ul>
-<h2 id="deposit">Deposit</h2>
-<p>CLI Code: <code>1000</code>
-HTTP route: <code>POST</code> to <code>/payment/deposit</code></p>
+<pre><code>curl --request POST \
+  --url https://bvnk.co:8443/transaction/credit \
+  --header &apos;cache-control: no-cache&apos; \
+  --header &apos;content-type: multipart/form-data; boundary=---011000010111000001101001&apos; \
+  --header &apos;x-auth-token: bf48d106-1953-45a3-a9f7-489aa156068b&apos; \
+  --form SenderDetails=97890206-89d0-40f1-8162-af76bdf05089@ \
+  --form RecipientDetails=89e2b879-c780-4481-a69a-d656a4d1f1ae@ \
+  --form Amount=20 \
+  --form Lat=11.0 \
+  --form Lon=12.0 \
+  --form &apos;Desc=Test desc&apos;
+</code></pre><p><strong>Response</strong></p>
+<pre><code>{
+  &quot;response&quot;: &quot;&quot;
+}
+</code></pre><h2 id="deposit">Deposit</h2>
+<p>HTTP route: <code>POST /payment/deposit</code></p>
+<p>This is used to deposit value into one of the user&apos;s own accounts. This is implemented currently to showcase
+how deposits will work, and will eventually be limited to just deposit mechanisms, for e.g. receiving money from 
+an ATM deposit, deposit via card transfer, etc.</p>
 <p><strong>Request</strong></p>
-<ul>
-<li><code>X-Auth-Token</code> header</li>
-<li>AccountNumber@BankNumber [Must be token user&apos;s account]</li>
-<li>Amount</li>
-</ul>
-<p><strong>Response</strong></p>
-<ul>
-<li>Message, token</li>
-</ul>
-
+<pre><code>curl --request POST \
+  --url https://bvnk.co:8443/transaction/deposit \
+  --header &apos;cache-control: no-cache&apos; \
+  --header &apos;content-type: multipart/form-data; boundary=---011000010111000001101001&apos; \
+  --header &apos;x-auth-token: bf48d106-1953-45a3-a9f7-489aa156068b&apos; \
+  --form AccountDetails=97890206-89d0-40f1-8162-af76bdf05089@ \
+  --form Amount=120 \
+  --form Lat=10. \
+  --form Lon=10. \
+  --form &apos;Desc=&#x1F34A;&apos;
+</code></pre><p><strong>Response</strong></p>
+<pre><code>{
+  &quot;response&quot;: &quot;&quot;
+}
+</code></pre><h2 id="transaction-list">Transaction List</h2>
+<p>HTTP route: <code>GET transactions/list/{perPage}/{pageNumber}</code></p>
+<p>This route returns a list of transactions according to the parameters sent in the request. In the <code>GET</code> request,
+perPage and pageNumber are sent through to list transactions. Transactions are returned per account linked to a given 
+user, and the accountNumber parameter specificies which user account to return transactions for.</p>
+<p>The order of transactions returned is from most recent. If a user wants to retrieve all transactions, they would loop through 
+transactions using this route increasing pageNumber until less than perPage is returned, or if an empty set is returned.</p>
+<p><strong>Request</strong></p>
+<pre><code>curl --request GET \
+  --url https://bvnk.co:8443/transaction/list/10/0 \
+  --header &apos;cache-control: no-cache&apos; \
+  --header &apos;content-type: multipart/form-data; boundary=---011000010111000001101001&apos; \
+  --header &apos;x-auth-accountnumber: 97890206-89d0-40f1-8162-af76bdf05089&apos; \
+  --header &apos;x-auth-token: 4e8afddd-e151-40ab-835c-2ced3a1ae075&apos; \
+</code></pre><p><strong>Response</strong></p>
+<pre><code>{
+    &quot;response&quot;: [
+        {
+            &quot;ID&quot;: 81,
+            &quot;PainType&quot;: 1,
+            &quot;Sender&quot;: {
+                &quot;AccountNumber&quot;: &quot;97890206-89d0-40f1-8162-af76bdf05089&quot;,
+                &quot;BankNumber&quot;: &quot;&quot;
+            },
+            &quot;Receiver&quot;: {
+                &quot;AccountNumber&quot;: &quot;89e2b879-c780-4481-a69a-d656a4d1f1ae&quot;,
+                &quot;BankNumber&quot;: &quot;&quot;
+            },
+            &quot;Amount&quot;: &quot;20&quot;,
+            &quot;Fee&quot;: &quot;0.0020000000949949026&quot;,
+            &quot;Geo&quot;: [
+                11,
+                12
+            ],
+            &quot;Desc&quot;: &quot;Test desc&quot;,
+            &quot;Status&quot;: &quot;approved&quot;,
+            &quot;Timestamp&quot;: 1472465399
+        },
+        {
+            &quot;ID&quot;: 80,
+            &quot;PainType&quot;: 1000,
+            &quot;Sender&quot;: {
+                &quot;AccountNumber&quot;: &quot;0&quot;,
+                &quot;BankNumber&quot;: &quot;0&quot;
+            },
+            &quot;Receiver&quot;: {
+                &quot;AccountNumber&quot;: &quot;97890206-89d0-40f1-8162-af76bdf05089&quot;,
+                &quot;BankNumber&quot;: &quot;&quot;
+            },
+            &quot;Amount&quot;: &quot;120&quot;,
+            &quot;Fee&quot;: &quot;0.012000000104308128&quot;,
+            &quot;Geo&quot;: [
+                10,
+                10
+            ],
+            &quot;Desc&quot;: &quot;&#x1F34A;&quot;,
+            &quot;Status&quot;: &quot;approved&quot;,
+            &quot;Timestamp&quot;: 1472379775
+        },
+        /* the remaining records up to perPage */
+    ]
+}
+</code></pre><h2 id="transaction-list-after-timestamp">Transaction List After Timestamp</h2>
+<p>HTTP route: <code>GET transactions/list/{perPage}/{pageNumber}/{timestamp}</code></p>
+<p>This route is the same as above, but will only return those records after a given timestamp. The 
+timestamp must be a UNIX timestamp.</p>
+<p><strong>Request</strong></p>
+<pre><code>curl --request GET \
+  --url https://bvnk.co:8443/transaction/list/10/0/1472465399 \
+  --header &apos;cache-control: no-cache&apos; \
+  --header &apos;content-type: multipart/form-data; boundary=---011000010111000001101001&apos; \
+  --header &apos;x-auth-accountnumber: 97890206-89d0-40f1-8162-af76bdf05089&apos; \
+  --header &apos;x-auth-token: 4e8afddd-e151-40ab-835c-2ced3a1ae075&apos; \
+</code></pre><p><strong>Response</strong></p>
+<pre><code>{
+    &quot;response&quot;: [
+        {
+            &quot;ID&quot;: 81,
+            &quot;PainType&quot;: 1,
+            &quot;Sender&quot;: {
+                &quot;AccountNumber&quot;: &quot;97890206-89d0-40f1-8162-af76bdf05089&quot;,
+                &quot;BankNumber&quot;: &quot;&quot;
+            },
+            &quot;Receiver&quot;: {
+                &quot;AccountNumber&quot;: &quot;89e2b879-c780-4481-a69a-d656a4d1f1ae&quot;,
+                &quot;BankNumber&quot;: &quot;&quot;
+            },
+            &quot;Amount&quot;: &quot;20&quot;,
+            &quot;Fee&quot;: &quot;0.0020000000949949026&quot;,
+            &quot;Geo&quot;: [
+                11,
+                12
+            ],
+            &quot;Desc&quot;: &quot;Test desc&quot;,
+            &quot;Status&quot;: &quot;approved&quot;,
+            &quot;Timestamp&quot;: 1472465399
+        }
+    ]
+}
+</code></pre>
                                 
                                 </section>
                             
@@ -400,7 +518,7 @@ HTTP route: <code>POST</code> to <code>/payment/deposit</code></p>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Payments","level":"1.3.3","depth":2,"next":{"title":"CLI","level":"1.4","depth":1,"ref":"","articles":[{"title":"Server","level":"1.4.1","depth":2,"path":"cli/server.md","ref":"cli/server.md","articles":[]},{"title":"Client","level":"1.4.2","depth":2,"path":"cli/client.md","ref":"cli/client.md","articles":[]}]},"previous":{"title":"Auth","level":"1.3.2","depth":2,"path":"api/auth.md","ref":"api/auth.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"api/payments.md","mtime":"2016-06-24T07:32:52.000Z","type":"markdown"},"gitbook":{"version":"3.1.1","time":"2016-06-24T07:23:50.217Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Payments","level":"1.3.3","depth":2,"next":{"title":"CLI","level":"1.4","depth":1,"ref":"","articles":[{"title":"Server","level":"1.4.1","depth":2,"path":"cli/server.md","ref":"cli/server.md","articles":[]},{"title":"Client","level":"1.4.2","depth":2,"path":"cli/client.md","ref":"cli/client.md","articles":[]}]},"previous":{"title":"Auth","level":"1.3.2","depth":2,"path":"api/auth.md","ref":"api/auth.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"api/payments.md","mtime":"2016-08-29T10:22:50.000Z","type":"markdown"},"gitbook":{"version":"3.1.1","time":"2016-08-29T09:15:40.274Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
