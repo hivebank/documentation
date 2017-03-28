@@ -18,7 +18,7 @@ __Request__
 
 ```
 curl --request POST \
-  --url https://bvnk.co:8443/auth/account \
+  --url https://demo.bankai.co/auth/account \
   --header 'cache-control: no-cache' \
   --header 'content-type: multipart/form-data; boundary=---011000010111000001101001' \
   --form UserIdentificationNumber=19000101-1234-124 \
@@ -50,7 +50,7 @@ __Request__
 
 ```
 curl --request POST \
-  --url https://bvnk.co:8443/auth/login \
+  --url https://demo.bankai.co/auth/login \
   --header 'cache-control: no-cache' \
   --header 'content-type: multipart/form-data; boundary=---011000010111000001101001' \
   --form User=2fe198f4-b953-4766-9d2a-bb6e9bc9be4f \
@@ -74,7 +74,7 @@ __Request__
 
 ```
 curl --request POST \
-  --url https://bvnk.co:8443/auth \
+  --url https://demo.bankai.co/auth \
   --header 'cache-control: no-cache' \
   --header 'x-auth-token: f2e55643-f89d-4de3-a427-1be162c24c75'
 ```
@@ -111,7 +111,7 @@ __Request__
 
 ```
 curl --request DELETE \
-  --url https://bvnk.co:8443/auth/account \
+  --url https://demo.bankai.co/auth/account \
   --header 'cache-control: no-cache' \
   --header 'content-type: multipart/form-data; boundary=---011000010111000001101001' \
   --header 'x-auth-token: 4e8afddd-e151-40ab-835c-2ced3a1ae075' \

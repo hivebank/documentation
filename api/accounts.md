@@ -11,7 +11,7 @@ __Request__
 
 ```
 curl --request POST \
-  --url https://bvnk.co:8443/account \
+  --url https://demo.bankai.co/account \
   --header 'cache-control: no-cache' \
   --header 'content-type: multipart/form-data; boundary=---011000010111000001101001' \
   --form AccountHolderGivenName=Test \
@@ -46,7 +46,7 @@ __Request__
 
 ```
 curl --request GET \
-  --url https://bvnk.co:8443/account \
+  --url https://demo.bankai.co/account \
   --header 'cache-control: no-cache' \
   --header 'x-auth-token: b0baa538-6967-436e-ba03-f1904d1b0dd5'
 ```
@@ -91,7 +91,7 @@ __Request__
 
 ```
 curl --request GET \
-  --url https://bvnk.co:8443/account/19000101-1234-124 \
+  --url https://demo.bankai.co/account/19000101-1234-124 \
   --header 'cache-control: no-cache' \
   --header 'x-auth-token: bf48d106-1953-45a3-a9f7-489aa156068b'
 ```
@@ -128,7 +128,7 @@ __Request__
 
 ```
 curl --request POST \
-  --url https://bvnk.co:8443/account/search \
+  --url https://demo.bankai.co/account/search \
   --header 'cache-control: no-cache' \
   --header 'content-type: multipart/form-data; boundary=---011000010111000001101001' \
   --form Search=Test
@@ -183,7 +183,7 @@ __Request__
 
 ```
 curl --request GET \
-  --url https://bvnk.co:8443/accountRetrieve \
+  --url https://demo.bankai.co/accountRetrieve \
   --header 'cache-control: no-cache' \
   --header 'postman-token: 4b4a0378-2411-27a8-6e76-a18365cdc27a' \
   --header 'x-emailaddress: new@ios.com' \
@@ -217,7 +217,7 @@ __Request__
 
 ```
 curl --request POST \
-  --url https://bvnk.co:8443/accountPushToken \
+  --url https://demo.bankai.co/accountPushToken \
   --header 'cache-control: no-cache' \
   --header 'content-type: multipart/form-data; boundary=---011000010111000001101001' \
   --header 'x-auth-token: 0da2796a-3ff7-424c-aa47-148124a060a1' \
@@ -242,7 +242,7 @@ __Request__
 
 ```
 curl --request DELETE \
-  --url https://bvnk.co:8443/accountPushToken \
+  --url https://demo.bankai.co/accountPushToken \
   --header 'cache-control: no-cache' \
   --header 'content-type: multipart/form-data; boundary=---011000010111000001101001' \
   --header 'x-auth-token: b9b41dc2-9a78-4872-b653-fdd9b1bedf8d' \

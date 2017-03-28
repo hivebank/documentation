@@ -32,7 +32,7 @@ For a response that resulted in an error, the following is returned:
 We use [Postman](https://getpostman.com) to do the API requests. You can import the latest 
 Postman [collection here](https://bvnk.co/Bvnk.postman_collection.json).
 
-If developing locally, please either change the url from `bvnk.co:8443` to your local instance. Alternatively, 
+If developing locally, please either change the url from `demo.bankai.co` to your local instance. Alternatively, 
 add the following in your `/etc/hosts` file:
 
 ```

@@ -22,7 +22,7 @@ __Request__
 
 ```
 curl --request POST \
-  --url https://bvnk.co:8443/transaction/credit \
+  --url https://demo.bankai.co/transaction/credit \
   --header 'cache-control: no-cache' \
   --header 'content-type: multipart/form-data; boundary=---011000010111000001101001' \
   --header 'x-auth-token: bf48d106-1953-45a3-a9f7-489aa156068b' \
@@ -116,7 +116,7 @@ __Request__
 
 ```
 curl --request GET \
-  --url https://bvnk.co:8443/transaction/list/10/0 \
+  --url https://demo.bankai.co/transaction/list/10/0 \
   --header 'cache-control: no-cache' \
   --header 'content-type: multipart/form-data; boundary=---011000010111000001101001' \
   --header 'x-auth-accountnumber: 97890206-89d0-40f1-8162-af76bdf05089' \
@@ -185,7 +185,7 @@ __Request__
 
 ```
 curl --request GET \
-  --url https://bvnk.co:8443/transaction/list/10/0/1472465399 \
+  --url https://demo.bankai.co/transaction/list/10/0/1472465399 \
   --header 'cache-control: no-cache' \
   --header 'content-type: multipart/form-data; boundary=---011000010111000001101001' \
   --header 'x-auth-accountnumber: 97890206-89d0-40f1-8162-af76bdf05089' \
