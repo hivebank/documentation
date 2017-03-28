@@ -36,28 +36,27 @@ curl --request POST \
 
 __Response__
 
+The ID of the transaction is returned
+
 ```
 {
-  "response": ""
+  "response": "1423"
 }
 ```
 
 ## Deposit
 HTTP route: `POST /payment/deposit`
 
-This is used to deposit value into one of the user's own accounts. This is implemented currently to showcase
-how deposits will work, and will eventually be limited to just deposit mechanisms, for e.g. receiving money from 
-an ATM deposit, deposit via card transfer, etc.
+This is used to deposit value into one of the user's own accounts. This route is locked down 
+to administrators through HTTP Basic Auth.
 
 __Request__
 
 ```
 curl --request POST \
-  --url https://bvnk.co:8443/transaction/deposit \
-  --header 'cache-control: no-cache' \
-  --header 'content-type: multipart/form-data; boundary=---011000010111000001101001' \
-  --header 'x-auth-token: bf48d106-1953-45a3-a9f7-489aa156068b' \
-  --form AccountDetails=97890206-89d0-40f1-8162-af76bdf05089@ \
+  --url https://demo.bankai.co/transaction/deposit \
+  --header 'authorization: Basic {{ HTTP Basic Auth }}' \
+  --form 'AccountDetails=97890206-89d0-40f1-8162-af76bdf05089@' \
   --form Amount=120 \
   --form Lat=10. \
   --form Lon=10. \
@@ -66,9 +65,40 @@ curl --request POST \
 
 __Response__
 
+The ID of the transaction is returned
+
 ```
 {
-  "response": ""
+  "response": "1424"
+}
+```
+
+## Withdrawal
+HTTP route: `POST /payment/withdrawal`
+
+This is used to withdraw value from one of the user's own accounts. This route is locked down 
+to administrators through HTTP Basic Auth.
+
+__Request__
+
+```
+curl --request POST \
+  --url https://demo.bankai.co/transaction/withdrawal \
+  --header 'authorization: Basic {{ HTTP Basic Auth }}' \
+  --form 'AccountDetails=97890206-89d0-40f1-8162-af76bdf05089@' \
+  --form Amount=120 \
+  --form Lat=10. \
+  --form Lon=10. \
+  --form 'Desc=🍊'
+```
+
+__Response__
+
+The ID of the transaction is returned
+
+```
+{
+  "response": "1424"
 }
 ```
 
