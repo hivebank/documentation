@@ -349,7 +349,7 @@
 as a unique identifier against a given user, with a one to one relationship to userIdentificationNumbers.</p>
 <p><strong>Request</strong></p>
 <pre><code>curl --request POST \
-  --url https://bvnk.co:8443/auth/account \
+  --url https://demo.bankai.co/auth/account \
   --header &apos;cache-control: no-cache&apos; \
   --header &apos;content-type: multipart/form-data; boundary=---011000010111000001101001&apos; \
   --form UserIdentificationNumber=19000101-1234-124 \
@@ -367,7 +367,7 @@ as a unique identifier against a given user, with a one to one relationship to u
 <p>This is used to retrieve a token to use in subsequent authenticated requests.</p>
 <p><strong>Request</strong></p>
 <pre><code>curl --request POST \
-  --url https://bvnk.co:8443/auth/login \
+  --url https://demo.bankai.co/auth/login \
   --header &apos;cache-control: no-cache&apos; \
   --header &apos;content-type: multipart/form-data; boundary=---011000010111000001101001&apos; \
   --form User=2fe198f4-b953-4766-9d2a-bb6e9bc9be4f \
@@ -381,7 +381,7 @@ as a unique identifier against a given user, with a one to one relationship to u
 <p>This is used to extend a token&apos;s TTL.</p>
 <p><strong>Request</strong></p>
 <pre><code>curl --request POST \
-  --url https://bvnk.co:8443/auth \
+  --url https://demo.bankai.co/auth \
   --header &apos;cache-control: no-cache&apos; \
   --header &apos;x-auth-token: f2e55643-f89d-4de3-a427-1be162c24c75&apos;
 </code></pre><p><strong>Response</strong></p>
@@ -402,7 +402,7 @@ sent through during any requests, and as such this must be sent manually across 
 We are investigating secure implementations of this.</em></p>
 <p><strong>Request</strong></p>
 <pre><code>curl --request DELETE \
-  --url https://bvnk.co:8443/auth/account \
+  --url https://demo.bankai.co/auth/account \
   --header &apos;cache-control: no-cache&apos; \
   --header &apos;content-type: multipart/form-data; boundary=---011000010111000001101001&apos; \
   --header &apos;x-auth-token: 4e8afddd-e151-40ab-835c-2ced3a1ae075&apos; \
@@ -455,7 +455,7 @@ We are investigating secure implementations of this.</em></p>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Auth","level":"1.3.2","depth":2,"next":{"title":"Payments","level":"1.3.3","depth":2,"path":"api/payments.md","ref":"api/payments.md","articles":[]},"previous":{"title":"Accounts","level":"1.3.1","depth":2,"path":"api/accounts.md","ref":"api/accounts.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"api/auth.md","mtime":"2016-08-29T10:06:59.000Z","type":"markdown"},"gitbook":{"version":"3.1.1","time":"2016-08-29T10:34:49.094Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Auth","level":"1.3.2","depth":2,"next":{"title":"Payments","level":"1.3.3","depth":2,"path":"api/payments.md","ref":"api/payments.md","articles":[]},"previous":{"title":"Accounts","level":"1.3.1","depth":2,"path":"api/accounts.md","ref":"api/accounts.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"api/auth.md","mtime":"2017-03-28T05:51:46.000Z","type":"markdown"},"gitbook":{"version":"3.1.1","time":"2017-03-28T05:54:02.428Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

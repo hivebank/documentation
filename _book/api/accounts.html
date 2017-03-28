@@ -342,7 +342,7 @@ is created as well as an <code>accounts</code> entry. If a user does already exi
 Users are linked to accounts through their userIdentificationNumber with a one to many relationship.</p>
 <p><strong>Request</strong></p>
 <pre><code>curl --request POST \
-  --url https://bvnk.co:8443/account \
+  --url https://demo.bankai.co/account \
   --header &apos;cache-control: no-cache&apos; \
   --header &apos;content-type: multipart/form-data; boundary=---011000010111000001101001&apos; \
   --form AccountHolderGivenName=Test \
@@ -367,7 +367,7 @@ Users are linked to accounts through their userIdentificationNumber with a one t
 information, and is only accessible by the user who owns those accounts.</p>
 <p><strong>Request</strong></p>
 <pre><code>curl --request GET \
-  --url https://bvnk.co:8443/account \
+  --url https://demo.bankai.co/account \
   --header &apos;cache-control: no-cache&apos; \
   --header &apos;x-auth-token: b0baa538-6967-436e-ba03-f1904d1b0dd5&apos;
 </code></pre><p><strong>Response</strong>
@@ -402,7 +402,7 @@ JSON list of accounts linked to user making request. The user is derived from th
 security implications involved around this and these will be investigated as the project matures.</p>
 <p><strong>Request</strong></p>
 <pre><code>curl --request GET \
-  --url https://bvnk.co:8443/account/19000101-1234-124 \
+  --url https://demo.bankai.co/account/19000101-1234-124 \
   --header &apos;cache-control: no-cache&apos; \
   --header &apos;x-auth-token: bf48d106-1953-45a3-a9f7-489aa156068b&apos;
 </code></pre><p><strong>Response</strong>
@@ -428,7 +428,7 @@ JSON list of accountNumbers linked to user.</p>
 <p>Search for an account using one of: userGivenName, userFamilyName, userEmailAddress. The search is case-sensitive.</p>
 <p><strong>Request</strong></p>
 <pre><code>curl --request POST \
-  --url https://bvnk.co:8443/account/search \
+  --url https://demo.bankai.co/account/search \
   --header &apos;cache-control: no-cache&apos; \
   --header &apos;content-type: multipart/form-data; boundary=---011000010111000001101001&apos; \
   --form Search=Test
@@ -472,7 +472,7 @@ access logs.</p>
 <p><em>Note: possible duplicate of <code>accountGetByID</code></em></p>
 <p><strong>Request</strong></p>
 <pre><code>curl --request GET \
-  --url https://bvnk.co:8443/accountRetrieve \
+  --url https://demo.bankai.co/accountRetrieve \
   --header &apos;cache-control: no-cache&apos; \
   --header &apos;postman-token: 4b4a0378-2411-27a8-6e76-a18365cdc27a&apos; \
   --header &apos;x-emailaddress: new@ios.com&apos; \
@@ -494,7 +494,7 @@ access logs.</p>
 Possible <code>Platform</code> values: ios, android, windows, blackberry, other.</p>
 <p><strong>Request</strong></p>
 <pre><code>curl --request POST \
-  --url https://bvnk.co:8443/accountPushToken \
+  --url https://demo.bankai.co/accountPushToken \
   --header &apos;cache-control: no-cache&apos; \
   --header &apos;content-type: multipart/form-data; boundary=---011000010111000001101001&apos; \
   --header &apos;x-auth-token: 0da2796a-3ff7-424c-aa47-148124a060a1&apos; \
@@ -509,7 +509,7 @@ Possible <code>Platform</code> values: ios, android, windows, blackberry, other.
 <p>This route removes an associated push token from an account and device.</p>
 <p><strong>Request</strong></p>
 <pre><code>curl --request DELETE \
-  --url https://bvnk.co:8443/accountPushToken \
+  --url https://demo.bankai.co/accountPushToken \
   --header &apos;cache-control: no-cache&apos; \
   --header &apos;content-type: multipart/form-data; boundary=---011000010111000001101001&apos; \
   --header &apos;x-auth-token: b9b41dc2-9a78-4872-b653-fdd9b1bedf8d&apos; \
@@ -562,7 +562,7 @@ Possible <code>Platform</code> values: ios, android, windows, blackberry, other.
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Accounts","level":"1.3.1","depth":2,"next":{"title":"Auth","level":"1.3.2","depth":2,"path":"api/auth.md","ref":"api/auth.md","articles":[]},"previous":{"title":"API","level":"1.3","depth":1,"path":"api/main.md","ref":"api/main.md","articles":[{"title":"Accounts","level":"1.3.1","depth":2,"path":"api/accounts.md","ref":"api/accounts.md","articles":[]},{"title":"Auth","level":"1.3.2","depth":2,"path":"api/auth.md","ref":"api/auth.md","articles":[]},{"title":"Payments","level":"1.3.3","depth":2,"path":"api/payments.md","ref":"api/payments.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"api/accounts.md","mtime":"2016-08-29T10:34:43.000Z","type":"markdown"},"gitbook":{"version":"3.1.1","time":"2016-08-29T10:34:49.094Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Accounts","level":"1.3.1","depth":2,"next":{"title":"Auth","level":"1.3.2","depth":2,"path":"api/auth.md","ref":"api/auth.md","articles":[]},"previous":{"title":"API","level":"1.3","depth":1,"path":"api/main.md","ref":"api/main.md","articles":[{"title":"Accounts","level":"1.3.1","depth":2,"path":"api/accounts.md","ref":"api/accounts.md","articles":[]},{"title":"Auth","level":"1.3.2","depth":2,"path":"api/auth.md","ref":"api/auth.md","articles":[]},{"title":"Payments","level":"1.3.3","depth":2,"path":"api/payments.md","ref":"api/payments.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"api/accounts.md","mtime":"2017-03-28T05:51:46.000Z","type":"markdown"},"gitbook":{"version":"3.1.1","time":"2017-03-28T05:54:02.428Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

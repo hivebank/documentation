@@ -346,7 +346,7 @@ between account holders on that system. There is, however, scope to include this
 deployment of BVNK, as well as account holders at other current banking institutions.</p>
 <p><strong>Request</strong></p>
 <pre><code>curl --request POST \
-  --url https://bvnk.co:8443/transaction/credit \
+  --url https://demo.bankai.co/transaction/credit \
   --header &apos;cache-control: no-cache&apos; \
   --header &apos;content-type: multipart/form-data; boundary=---011000010111000001101001&apos; \
   --header &apos;x-auth-token: bf48d106-1953-45a3-a9f7-489aa156068b&apos; \
@@ -357,28 +357,45 @@ deployment of BVNK, as well as account holders at other current banking institut
   --form Lon=12.0 \
   --form &apos;Desc=Test desc&apos;
 </code></pre><p><strong>Response</strong></p>
+<p>The ID of the transaction is returned</p>
 <pre><code>{
-  &quot;response&quot;: &quot;&quot;
+  &quot;response&quot;: &quot;1423&quot;
 }
 </code></pre><h2 id="deposit">Deposit</h2>
 <p>HTTP route: <code>POST /payment/deposit</code></p>
-<p>This is used to deposit value into one of the user&apos;s own accounts. This is implemented currently to showcase
-how deposits will work, and will eventually be limited to just deposit mechanisms, for e.g. receiving money from 
-an ATM deposit, deposit via card transfer, etc.</p>
+<p>This is used to deposit value into one of the user&apos;s own accounts. This route is locked down 
+to administrators through HTTP Basic Auth.</p>
 <p><strong>Request</strong></p>
 <pre><code>curl --request POST \
-  --url https://bvnk.co:8443/transaction/deposit \
-  --header &apos;cache-control: no-cache&apos; \
-  --header &apos;content-type: multipart/form-data; boundary=---011000010111000001101001&apos; \
-  --header &apos;x-auth-token: bf48d106-1953-45a3-a9f7-489aa156068b&apos; \
-  --form AccountDetails=97890206-89d0-40f1-8162-af76bdf05089@ \
+  --url https://demo.bankai.co/transaction/deposit \
+  --header &apos;authorization: Basic {{ HTTP Basic Auth }}&apos; \
+  --form &apos;AccountDetails=97890206-89d0-40f1-8162-af76bdf05089@&apos; \
   --form Amount=120 \
   --form Lat=10. \
   --form Lon=10. \
   --form &apos;Desc=&#x1F34A;&apos;
 </code></pre><p><strong>Response</strong></p>
+<p>The ID of the transaction is returned</p>
 <pre><code>{
-  &quot;response&quot;: &quot;&quot;
+  &quot;response&quot;: &quot;1424&quot;
+}
+</code></pre><h2 id="withdrawal">Withdrawal</h2>
+<p>HTTP route: <code>POST /payment/withdrawal</code></p>
+<p>This is used to withdraw value from one of the user&apos;s own accounts. This route is locked down 
+to administrators through HTTP Basic Auth.</p>
+<p><strong>Request</strong></p>
+<pre><code>curl --request POST \
+  --url https://demo.bankai.co/transaction/withdrawal \
+  --header &apos;authorization: Basic {{ HTTP Basic Auth }}&apos; \
+  --form &apos;AccountDetails=97890206-89d0-40f1-8162-af76bdf05089@&apos; \
+  --form Amount=120 \
+  --form Lat=10. \
+  --form Lon=10. \
+  --form &apos;Desc=&#x1F34A;&apos;
+</code></pre><p><strong>Response</strong></p>
+<p>The ID of the transaction is returned</p>
+<pre><code>{
+  &quot;response&quot;: &quot;1424&quot;
 }
 </code></pre><h2 id="transaction-list">Transaction List</h2>
 <p>HTTP route: <code>GET transactions/list/{perPage}/{pageNumber}</code></p>
@@ -389,7 +406,7 @@ user, and the accountNumber parameter specificies which user account to return t
 transactions using this route increasing pageNumber until less than perPage is returned, or if an empty set is returned.</p>
 <p><strong>Request</strong></p>
 <pre><code>curl --request GET \
-  --url https://bvnk.co:8443/transaction/list/10/0 \
+  --url https://demo.bankai.co/transaction/list/10/0 \
   --header &apos;cache-control: no-cache&apos; \
   --header &apos;content-type: multipart/form-data; boundary=---011000010111000001101001&apos; \
   --header &apos;x-auth-accountnumber: 97890206-89d0-40f1-8162-af76bdf05089&apos; \
@@ -448,7 +465,7 @@ transactions using this route increasing pageNumber until less than perPage is r
 timestamp must be a UNIX timestamp.</p>
 <p><strong>Request</strong></p>
 <pre><code>curl --request GET \
-  --url https://bvnk.co:8443/transaction/list/10/0/1472465399 \
+  --url https://demo.bankai.co/transaction/list/10/0/1472465399 \
   --header &apos;cache-control: no-cache&apos; \
   --header &apos;content-type: multipart/form-data; boundary=---011000010111000001101001&apos; \
   --header &apos;x-auth-accountnumber: 97890206-89d0-40f1-8162-af76bdf05089&apos; \
@@ -518,7 +535,7 @@ timestamp must be a UNIX timestamp.</p>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Payments","level":"1.3.3","depth":2,"next":{"title":"CLI","level":"1.4","depth":1,"ref":"","articles":[{"title":"Server","level":"1.4.1","depth":2,"path":"cli/server.md","ref":"cli/server.md","articles":[]},{"title":"Client","level":"1.4.2","depth":2,"path":"cli/client.md","ref":"cli/client.md","articles":[]}]},"previous":{"title":"Auth","level":"1.3.2","depth":2,"path":"api/auth.md","ref":"api/auth.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"api/payments.md","mtime":"2016-08-29T10:22:50.000Z","type":"markdown"},"gitbook":{"version":"3.1.1","time":"2016-08-29T10:34:49.094Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Payments","level":"1.3.3","depth":2,"next":{"title":"CLI","level":"1.4","depth":1,"ref":"","articles":[{"title":"Server","level":"1.4.1","depth":2,"path":"cli/server.md","ref":"cli/server.md","articles":[]},{"title":"Client","level":"1.4.2","depth":2,"path":"cli/client.md","ref":"cli/client.md","articles":[]}]},"previous":{"title":"Auth","level":"1.3.2","depth":2,"path":"api/auth.md","ref":"api/auth.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"api/payments.md","mtime":"2017-03-28T05:51:46.000Z","type":"markdown"},"gitbook":{"version":"3.1.1","time":"2017-03-28T05:54:02.428Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
