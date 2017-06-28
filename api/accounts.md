@@ -7,6 +7,10 @@ This route is used to open an account against a given user. If the user does not
 is created as well as an `accounts` entry. If a user does already exist on the system, only a new account is created against the user.
 Users are linked to accounts through their userIdentificationNumber with a one to many relationship.
 
+By default, new accounts will be created for a user if a user exists or not. If this call is to be used to only create a user and register 
+their first account, an additional flag can be sent `action=create`. If this is present, if the given user (identified by their IdentificationNumber) 
+has an account on the system, an error will be returned.
+
 __Request__
 
 ```
@@ -25,7 +29,8 @@ curl --request POST \
   --form 'AccountHolderAddressLine2=Address 2' \
   --form 'AccountHolderAddressLine3=Address 3' \
   --form AccountHolderPostalCode=1234 \
-  --form AccountType=savings
+  --form AccountType=savings \
+  --form Action=create
 ```
 
 __Response__
@@ -81,6 +86,40 @@ JSON list of accounts linked to user making request. The user is derived from th
 }
 ```
 
+## Get Account Holder
+HTTP route: `GET accountHolder/`
+
+Get the current user's account details. The user is identified through the token passed through the header.
+
+__Request__
+
+```
+curl --request GET \
+  --url https://demo.bankai.co/accountHolder/ \
+  --header 'x-auth-token: eff0aa29-1842-4ff1-b522-896af9797f9c'
+```
+
+__Response__
+JSON response of account holder details. accounts linked to user making request. The user is derived from the authToken in the header.
+
+```
+{
+  "response": {
+    "GivenName": "Test",
+    "FamilyName": "User1",
+    "DateOfBirth": "1900-01-01",
+    "IdentificationNumber": "000000-0000-001",
+    "ContactNumber1": "(555) 555-1234",
+    "ContactNumber2": "(555) 555-4321",
+    "EmailAddress": "alice@bankai.co",
+    "AddressLine1": "Address 1",
+    "AddressLine2": "Address 2",
+    "AddressLine3": "Address 3",
+    "PostalCode": "1234"
+  }
+}
+```
+
 ## Account Get by ID
 HTTP route: `GET account/{userIdentificationNumber}`
 
@@ -116,6 +155,38 @@ JSON list of accountNumbers linked to user.
         "74d95847-69e7-483e-8f37-115f99d0261b",
         "74d95847-69e7-483e-8f37-115f99d0261b"
     ]
+}
+```
+
+## Get Account By Account Number
+HTTP route: `GET accountByNumber/{accountNumber}`
+
+This call will respond with account holder for the given account number. This will return no sensitive
+information.
+
+__Request__
+
+```
+curl --request GET \
+  --url 'https://demo.bankai.co/accountByNumber/edd38b84-8eb1-4d25-bb46-a82738723628' \
+  --header 'x-auth-token: 60ce8d4a-d08e-4c1c-be5e-119f3cab08ad'
+```
+
+__Response__
+JSON of single account user linked to account number.
+
+```
+{
+  "response": {
+    "AccountNumber": "edd38b84-8eb1-4d25-bb46-a82738723628",
+    "BankNumber": "a0299975-b8e2-4358-8f1a-911ee12dbaac",
+    "AccountHolderName": "User1,Test",
+    "AccountBalance": "0",
+    "Overdraft": "0",
+    "AvailableBalance": "0",
+    "Type": "",
+    "Timestamp": 0
+  }
 }
 ```
 

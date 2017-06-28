@@ -133,11 +133,13 @@ __Response__
             "PainType": 1,
             "Sender": {
                 "AccountNumber": "97890206-89d0-40f1-8162-af76bdf05089",
-                "BankNumber": ""
+                "BankNumber": "",
+                "Name" : "Test,Alice"
             },
             "Receiver": {
                 "AccountNumber": "89e2b879-c780-4481-a69a-d656a4d1f1ae",
-                "BankNumber": ""
+                "BankNumber": "",
+                "Name" : "Test,Bob"
             },
             "Amount": "20",
             "Fee": "0.0020000000949949026",
@@ -154,11 +156,13 @@ __Response__
             "PainType": 1000,
             "Sender": {
                 "AccountNumber": "0",
-                "BankNumber": "0"
+                "BankNumber": "0",
+                "Name" : "Test,Alice"
             },
             "Receiver": {
                 "AccountNumber": "97890206-89d0-40f1-8162-af76bdf05089",
-                "BankNumber": ""
+                "BankNumber": "",
+                "Name" : "Test,Bob"
             },
             "Amount": "120",
             "Fee": "0.012000000104308128",
@@ -202,11 +206,13 @@ __Response__
             "PainType": 1,
             "Sender": {
                 "AccountNumber": "97890206-89d0-40f1-8162-af76bdf05089",
-                "BankNumber": ""
+                "BankNumber": "",
+                "Name" : "Test,Bob"
             },
             "Receiver": {
                 "AccountNumber": "89e2b879-c780-4481-a69a-d656a4d1f1ae",
-                "BankNumber": ""
+                "BankNumber": "",
+                "Name" : "Test,Bob"
             },
             "Amount": "20",
             "Fee": "0.0020000000949949026",
